@@ -1,7 +1,7 @@
 resource  "aws_instance""remote_state"{
-    ami = data.aws_ami.amiID
+    ami = data.aws_ami.amiID.id
     instance_type = var.instance_type
-    vpc_security_group_ids = [""]
+    vpc_security_group_ids = [aws_security_group.remote_state.id]
 }
 
 resource "aws_security_group" "remote_state"{
